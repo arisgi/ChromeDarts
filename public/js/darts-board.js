@@ -1,25 +1,26 @@
 /* global window, THREE */
 
 function init() {
-  var scene = new THREE.Scene();
+  const scene = new THREE.Scene();
 
-  var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-  var renderer = new THREE.WebGLRenderer();
+  const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer();
 
   renderer.setClearColor(new THREE.Color(0xAAAAAA));
   renderer.setSize(window.innerWidth, window.innerHeight);
 
-  var geo, mat, col;
+  let geo;
+  let mat;
 
   // out zone
   geo = new THREE.CircleGeometry(235, 100);
   mat = new THREE.MeshBasicMaterial({ color: 0x0B0D14 });
-  var out = new THREE.Mesh(geo, mat);
+  const out = new THREE.Mesh(geo, mat);
   scene.add(out);
 
   // double zone
-  var double = [];
-  for (var i = 0; i < 20; i++) {
+  const double = [];
+  for (let i = 0; i < 20; i++) {
     geo = new THREE.CircleGeometry(195, 100, 2 * Math.PI * i / 20, 2 * Math.PI * 1 / 20);
 
     if (i % 2 === 0) {
@@ -34,8 +35,8 @@ function init() {
   }
 
   // outer single zone
-  var outerSingle = [];
-  for (var i = 0; i < 20; i++) {
+  const outerSingle = [];
+  for (let i = 0; i < 20; i++) {
     geo = new THREE.CircleGeometry(175, 100, 2 * Math.PI * i / 20, 2 * Math.PI * 1 / 20);
 
     if (i % 2 === 0) {
@@ -52,8 +53,8 @@ function init() {
   }
 
   // triple zone
-  var triple = [];
-  for (var i = 0; i < 20; i++) {
+  const triple = [];
+  for (let i = 0; i < 20; i++) {
     geo = new THREE.CircleGeometry(123, 100, 2 * Math.PI * i / 20, 2 * Math.PI * 1 / 20);
 
     if (i % 2 === 0) {
@@ -69,8 +70,8 @@ function init() {
   }
 
   // inner single zone
-  var innerSingle = [];
-  for (var i = 0; i < 20; i++) {
+  const innerSingle = [];
+  for (let i = 0; i < 20; i++) {
     geo = new THREE.CircleGeometry(105, 100, 2 * Math.PI * i / 20, 2 * Math.PI * 1 / 20);
 
     if (i % 2 === 0) {
@@ -89,7 +90,7 @@ function init() {
   // outer bull zone
   geo = new THREE.CircleGeometry(20, 100);
   mat = new THREE.MeshBasicMaterial({ color: 0x882629 });
-  var outerBull = new THREE.Mesh(geo, mat);
+  const outerBull = new THREE.Mesh(geo, mat);
   outerBull.position.z = 0.4;
   outerBull.rotation.z = Math.PI / 20;
   scene.add(outerBull);
@@ -97,16 +98,16 @@ function init() {
   // inner bull zone
   geo = new THREE.CircleGeometry(8, 100);
   mat = new THREE.MeshBasicMaterial({ color: 0x0B0D14 });
-  var innerBull = new THREE.Mesh(geo, mat);
+  const innerBull = new THREE.Mesh(geo, mat);
   innerBull.position.z = 0.5;
   innerBull.rotation.z = Math.PI / 20;
   scene.add(innerBull);
 
   // number
-  var number = [];
-  var loader = new THREE.FontLoader();
+  const number = [];
+  const loader = new THREE.FontLoader();
   loader.load('/js/font/helvetiker_regular.typeface.json', function(font) {
-    for(var n = 1; n < 21; n++) {
+    for (let n = 1; n < 21; n++) {
       geo = new THREE.TextGeometry(`${n}`, {
         font: font,
         size: 20,
@@ -165,7 +166,7 @@ function init() {
   camera.position.z = 800;
   camera.lookAt(new THREE.Vector3(0, 0, 0));
 
-  var spotLight = new THREE.SpotLight(0xFFFFFF);
+  const spotLight = new THREE.SpotLight(0xFFFFFF);
   spotLight.position.set(-40, 60, -10);
   scene.add(spotLight);
 
