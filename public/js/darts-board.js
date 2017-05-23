@@ -1,4 +1,4 @@
-/* global window, THREE */
+/* global window, document, THREE, requestAnimationFrame */
 
 function init() {
   const scene = new THREE.Scene();
