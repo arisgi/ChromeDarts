@@ -102,6 +102,64 @@ function init() {
   innerBull.rotation.z = Math.PI / 20;
   scene.add(innerBull);
 
+  // number
+  var number = [];
+  var loader = new THREE.FontLoader();
+  loader.load('/js/font/helvetiker_regular.typeface.json', function(font) {
+    for(var n = 1; n < 21; n++) {
+      geo = new THREE.TextGeometry(`${n}`, {
+        font: font,
+        size: 20,
+        height: 5
+      });
+      mat = new THREE.MeshBasicMaterial({ color: 0xEAEBEE });
+      number[n] = new THREE.Mesh(geo, mat);
+      scene.add(number[n]);
+    }
+
+    // adjust each position
+    number[1].position.x = 55;
+    number[1].position.y = 195;
+    number[2].position.x = 115;
+    number[2].position.y = -183;
+    number[3].position.x = -8;
+    number[3].position.y = -224;
+    number[4].position.x = 167;
+    number[4].position.y = 114;
+    number[5].position.x = -73;
+    number[5].position.y = 195;
+    number[6].position.x = 205;
+    number[6].position.y = -11;
+    number[7].position.x = -130;
+    number[7].position.y = -186;
+    number[8].position.x = -212;
+    number[8].position.y = -75;
+    number[9].position.x = -182;
+    number[9].position.y = 114;
+    number[10].position.x = 187;
+    number[10].position.y = -75;
+    number[11].position.x = -232;
+    number[11].position.y = -10;
+    number[12].position.x = -145;
+    number[12].position.y = 164;
+    number[13].position.x = 186;
+    number[13].position.y = 52;
+    number[14].position.x = -222;
+    number[14].position.y = 55;
+    number[15].position.x = 156;
+    number[15].position.y = -134;
+    number[16].position.x = -192;
+    number[16].position.y = -134;
+    number[17].position.x = -82;
+    number[17].position.y = -214;
+    number[18].position.x = 107;
+    number[18].position.y = 165;
+    number[19].position.x = 47;
+    number[19].position.y = -213;
+    number[20].position.x = -15;
+    number[20].position.y = 204;
+  });
+
   camera.position.x = 0;
   camera.position.y = 0;
   camera.position.z = 800;
