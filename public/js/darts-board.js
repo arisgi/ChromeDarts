@@ -106,7 +106,7 @@ function init() {
   // number
   const number = [];
   const loader = new THREE.FontLoader();
-  loader.load('/js/font/helvetiker_regular.typeface.json', function(font) {
+  loader.load('/js/font/helvetiker_regular.typeface.json', (font) => {
     for (let i = 1; i < 21; i += 1) {
       geo = new THREE.TextGeometry(`${i}`, {
         font: font,
