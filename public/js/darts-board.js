@@ -172,12 +172,12 @@ function init() {
 
   document.getElementById('root').appendChild(renderer.domElement);
 
-  render();
-
   function render() {
     requestAnimationFrame(render);
     renderer.render(scene, camera);
   }
+
+  render();
 }
 
 window.onload = init;
