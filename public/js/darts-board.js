@@ -170,7 +170,7 @@ function init() {
   spotLight.position.set(-40, 60, -10);
   scene.add(spotLight);
 
-  document.getElementById("root").appendChild(renderer.domElement);
+  document.getElementById('root').appendChild(renderer.domElement);
 
   render();
 
