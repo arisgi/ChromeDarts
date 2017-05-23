@@ -12,7 +12,11 @@ app.get('/', (req, res) => {
 app.get('/sp', (req, res) => {
   const ua = uaParser(req.headers['user-agent']);
 
-  res.json(ua);
+  if (ua.device.type === 'mobile' && ua.os.name === 'iOS') {
+    res.send('OK');
+  } else {
+    res.send('iPhoneからアクセスしてください。');
+  }
 });
 
 app.listen(3000);
