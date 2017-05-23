@@ -109,9 +109,9 @@ function init() {
   loader.load('/js/font/helvetiker_regular.typeface.json', (font) => {
     for (let i = 1; i < 21; i += 1) {
       geo = new THREE.TextGeometry(`${i}`, {
-        font: font,
+        font,
         size: 20,
-        height: 5
+        height: 5,
       });
       mat = new THREE.MeshBasicMaterial({ color: 0xEAEBEE });
       number[i] = new THREE.Mesh(geo, mat);
