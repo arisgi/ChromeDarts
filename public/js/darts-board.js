@@ -13,7 +13,7 @@ function init() {
 
   // out zone
   geo = new THREE.CircleGeometry(235, 100);
-  mat = new THREE.MeshBasicMaterial({ color: 0x000000 });
+  mat = new THREE.MeshBasicMaterial({ color: 0x0B0D14 });
   var out = new THREE.Mesh(geo, mat);
   scene.add(out);
 
