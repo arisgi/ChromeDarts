@@ -20,8 +20,8 @@ function init() {
 
   // double zone
   const double = [];
-  for (let i = 0; i < 20; i++) {
-    geo = new THREE.CircleGeometry(195, 100, 2 * Math.PI * i / 20, 2 * Math.PI * 1 / 20);
+  for (let i = 0; i < 20; i += 1) {
+    geo = new THREE.CircleGeometry(195, 100, (Math.PI * i) / 10, Math.PI / 10);
 
     if (i % 2 === 0) {
       mat = new THREE.MeshBasicMaterial({ color: 0x882629 });
@@ -36,8 +36,8 @@ function init() {
 
   // outer single zone
   const outerSingle = [];
-  for (let i = 0; i < 20; i++) {
-    geo = new THREE.CircleGeometry(175, 100, 2 * Math.PI * i / 20, 2 * Math.PI * 1 / 20);
+  for (let i = 0; i < 20; i += 1) {
+    geo = new THREE.CircleGeometry(175, 100, (Math.PI * i) / 10, Math.PI / 10);
 
     if (i % 2 === 0) {
       mat = new THREE.MeshBasicMaterial({ color: 0x0B0D14 });
@@ -54,8 +54,8 @@ function init() {
 
   // triple zone
   const triple = [];
-  for (let i = 0; i < 20; i++) {
-    geo = new THREE.CircleGeometry(123, 100, 2 * Math.PI * i / 20, 2 * Math.PI * 1 / 20);
+  for (let i = 0; i < 20; i += 1) {
+    geo = new THREE.CircleGeometry(123, 100, (Math.PI * i) / 10, Math.PI / 10);
 
     if (i % 2 === 0) {
       mat = new THREE.MeshBasicMaterial({ color: 0x882629 });
@@ -71,8 +71,8 @@ function init() {
 
   // inner single zone
   const innerSingle = [];
-  for (let i = 0; i < 20; i++) {
-    geo = new THREE.CircleGeometry(105, 100, 2 * Math.PI * i / 20, 2 * Math.PI * 1 / 20);
+  for (let i = 0; i < 20; i += 1) {
+    geo = new THREE.CircleGeometry(105, 100, (Math.PI * i) / 10, Math.PI / 10);
 
     if (i % 2 === 0) {
       mat = new THREE.MeshBasicMaterial({ color: 0x0B0D14 });
@@ -107,15 +107,15 @@ function init() {
   const number = [];
   const loader = new THREE.FontLoader();
   loader.load('/js/font/helvetiker_regular.typeface.json', function(font) {
-    for (let n = 1; n < 21; n++) {
-      geo = new THREE.TextGeometry(`${n}`, {
+    for (let i = 1; i < 21; i += 1) {
+      geo = new THREE.TextGeometry(`${i}`, {
         font: font,
         size: 20,
         height: 5
       });
       mat = new THREE.MeshBasicMaterial({ color: 0xEAEBEE });
-      number[n] = new THREE.Mesh(geo, mat);
-      scene.add(number[n]);
+      number[i] = new THREE.Mesh(geo, mat);
+      scene.add(number[i]);
     }
 
     // adjust each position
