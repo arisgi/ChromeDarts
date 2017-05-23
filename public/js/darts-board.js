@@ -11,6 +11,12 @@ function init() {
 
   var geo, mat, col;
 
+  // out zone
+  geo = new THREE.CircleGeometry(235, 100);
+  mat = new THREE.MeshBasicMaterial({ color: 0x000000 });
+  var out = new THREE.Mesh(geo, mat);
+  scene.add(out);
+
   // double zone
   var double = [];
   for (var i = 0; i < 20; i++) {
