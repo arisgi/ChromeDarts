@@ -3,7 +3,9 @@ import React from 'react';
 export default class Sp extends React.Component {
   constructor() {
     super();
-    /* initialize */
+    this.state = {
+      login: false,
+    };
   }
 
   render() {
