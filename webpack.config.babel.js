@@ -1,7 +1,7 @@
 import path from 'path';
 
 module.exports = {
-  entry: '',
+  entry: './src/sp.jsx',
   output: {
     filename: 'sp.js',
     path: path.resolve(__dirname, 'public/js'),
