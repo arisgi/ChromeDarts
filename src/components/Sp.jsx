@@ -1,6 +1,7 @@
 import React from 'react';
 import io from 'socket.io-client';
 import LoginForm from './LoginForm';
+import DartsRoom from './DartsRoom';
 
 export default class Sp extends React.Component {
   constructor() {
@@ -36,6 +37,7 @@ export default class Sp extends React.Component {
     return (
       <div>
         {this.state.login === false && <LoginForm handleLogin={this.handleLogin} errorMessage={this.state.errorMessage} />}
+        {this.state.login === true && <DartsRoom />}
       </div>
     );
   }
