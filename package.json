@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "./node_modules/.bin/babel-node app.js"
+    "watch": "webpack --config webpack.config.babel.js -w",
+    "start": "./node_modules/.bin/babel-node app.js",
+    "dev": "yarn run watch & yarn run start"
   },
   "repository": "git+https://github.com/arisgi/ChromeDarts.git",
   "author": "arisgi <m1so.tama16@gmail.com>",
