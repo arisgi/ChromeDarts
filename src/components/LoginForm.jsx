@@ -6,6 +6,7 @@ export default class LoginForm extends React.Component {
     this.state = {
       value: '',
       error: '',
+      disabled: true,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,6 +27,17 @@ export default class LoginForm extends React.Component {
         error: '',
       });
     }
+
+    // validation
+    if (!event.target.value || event.target.value.length > 10) {
+      this.setState({
+        disabled: true,
+      });
+    } else {
+      this.setState({
+        disabled: false,
+      });
+    }
   }
 
   handleSubmit(event) {
@@ -37,7 +49,7 @@ export default class LoginForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <input type="text" value={this.state.value} onChange={this.handleChange} />
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit" disabled={this.state.disabled} />
         {this.state.error && <p>{this.state.error}</p>}
       </form>
     );
