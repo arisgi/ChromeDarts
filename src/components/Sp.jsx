@@ -1,4 +1,5 @@
 import React from 'react';
+import LoginForm from './LoginForm';
 
 export default class Sp extends React.Component {
   constructor() {
@@ -11,7 +12,7 @@ export default class Sp extends React.Component {
   render() {
     return (
       <div>
-        Sp
+        {this.state.login === false && <LoginForm />}
       </div>
     );
   }
