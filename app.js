@@ -13,7 +13,7 @@ app.get('/sp', (req, res) => {
   const ua = uaParser(req.headers['user-agent']);
 
   if (ua.device.type === 'mobile' && ua.os.name === 'iOS') {
-    res.send('OK');
+    res.sendFile(`${__dirname}/public/sp.html`);
   } else {
     res.send('iPhoneからアクセスしてください。');
   }
