@@ -7,7 +7,7 @@ const app = express();
 const server = http.Server(app);
 const io = new SocketIo(server);
 
-// number of login user
+// login user list
 const users = [];
 
 app.use(express.static('public'));
