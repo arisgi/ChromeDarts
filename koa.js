@@ -2,6 +2,7 @@ import Koa from 'koa';
 import Router from 'koa-router';
 import serve from 'koa-static';
 import views from 'koa-views';
+import uaParser from 'ua-parser-js';
 
 const app = new Koa();
 const router = Router();
@@ -14,7 +15,12 @@ router.get('/', async (ctx, next) => {
 });
 
 router.get('/sp', async (ctx, next) => {
-  await ctx.render('sp.pug');
+  const ua = uaParser(ctx.request.headers['user-agent']);
+  if (ua.device.type === 'mobile' && ua.os.name === 'iOS') {
+    await ctx.render('sp.pug');
+  } else {
+    ctx.body = 'iPhoneからアクセスしてください。';
+  }
 });
 
 app.use(router.routes());
