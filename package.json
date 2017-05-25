@@ -29,6 +29,7 @@
     "eslint-plugin-react": "^7.0.1",
     "express": "^4.15.3",
     "koa": "^2.2.0",
+    "koa-render": "^0.2.1",
     "koa-router": "^7.2.0",
     "koa-static": "^3.0.0",
     "react": "^15.5.4",
