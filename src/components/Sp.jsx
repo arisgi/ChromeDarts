@@ -19,11 +19,17 @@ export default class Sp extends React.Component {
   handleLogin(name) {
     this.socket.emit('login', name);
 
+    // variable to avoid binding of this
+    const socket = this.socket;
+    let loginName = this.state.name;
+
     this.socket.on('success', () => {
       this.setState({
         login: true,
         name,
       });
+
+      loginName = name;
     });
 
     this.socket.on('reject', () => {
