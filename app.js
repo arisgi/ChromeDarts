@@ -41,6 +41,20 @@ io.on('connect', (socket) => {
       console.log(`${name} reject`);
     }
   });
+
+  // check current login users
+  const currentUsers = [];
+  socket.on('disconnect', () => {
+    console.log('someone disconnected');
+
+    io.emit('check-login', (users));
+  });
+
+  socket.on('login-now', (name) => {
+    console.log(`${name} now login`);
+    currentUsers.push(name);
+    console.log(currentUsers);
+  });
 });
 
 server.listen(3000);
