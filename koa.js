@@ -1,8 +1,11 @@
 import Koa from 'koa';
 import Router from 'koa-router';
+import serve from 'koa-static';
 
 const app = new Koa();
 const router = Router();
+
+app.use(serve('public'));
 
 router.get('/', (ctx, next) => {
   ctx.body = '/';
