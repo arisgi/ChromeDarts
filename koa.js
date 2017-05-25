@@ -3,8 +3,11 @@ import Router from 'koa-router';
 import serve from 'koa-static';
 import views from 'koa-views';
 import uaParser from 'ua-parser-js';
+import SocketIo from 'socket.io';
 
 const app = new Koa();
+const server = app.listen(3000);
+const io = SocketIo.listen(server);
 const router = Router();
 
 app.use(serve('public'));
@@ -23,7 +26,9 @@ router.get('/sp', async (ctx, next) => {
   }
 });
 
+io.on('connection', (socket) => {
+  console.log('server connected');
+});
+
 app.use(router.routes());
 app.use(router.allowedMethods);
-
-app.listen(3000);
