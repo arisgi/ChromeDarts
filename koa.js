@@ -26,8 +26,24 @@ router.get('/sp', async (ctx, next) => {
   }
 });
 
+// login users list
+const users = [];
+
 io.on('connection', (socket) => {
   console.log('server connected');
+
+  socket.on('login', (name) => {
+    if (users.length < 2) {
+      users.push(name);
+      io.emit('success');
+
+      console.log(`${name} login`);
+    } else {
+      io.emit('reject');
+
+      console.log(`${name} reject`);
+    }
+  });
 });
 
 app.use(router.routes());
