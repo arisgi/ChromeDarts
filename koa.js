@@ -1,18 +1,20 @@
 import Koa from 'koa';
 import Router from 'koa-router';
 import serve from 'koa-static';
+import views from 'koa-views';
 
 const app = new Koa();
 const router = Router();
 
 app.use(serve('public'));
+app.use(views('public', { extensions: 'pug' }));
 
-router.get('/', (ctx, next) => {
-  ctx.body = '/';
+router.get('/', async (ctx, next) => {
+  await ctx.render('index');
 });
 
-router.get('/sp', (ctx, next) => {
-  ctx.body = '/sp';
+router.get('/sp', async (ctx, next) => {
+  await ctx.render('sp');
 });
 
 app.use(router.routes());
