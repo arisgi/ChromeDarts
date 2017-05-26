@@ -30,21 +30,17 @@ export default class Sp extends React.Component {
       });
 
       loginName = name;
+
+      // tell the server that I'm logged in
+      socket.on(`check-${loginName}`, () => {
+        socket.emit(`login-${loginName}`);
+      });
     });
 
     this.socket.on('reject', () => {
       this.setState({
         errorMessage: 'ダーツルームは満席です。',
       });
-    });
-
-    // tell the server that I'm logged in
-    this.socket.on('check-login', (users) => {
-      for (let i = 0; i < 2; i += 1) {
-        if (users[i] === loginName) {
-          socket.emit('login-now', loginName);
-        }
-      }
     });
   }
 
