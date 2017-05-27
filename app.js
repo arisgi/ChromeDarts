@@ -50,7 +50,9 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     console.log('someone disconnected');
 
-    io.emit('check-login', (users));
+    for (let i = 0; i < users.length; i += 1) {
+      io.emit(`check-${users[i]}`);
+    }
   });
 
   socket.on('login-now', (name) => {
