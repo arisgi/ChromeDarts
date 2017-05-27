@@ -55,11 +55,13 @@ io.on('connection', (socket) => {
     }
   });
 
-  socket.on('login-now', (name) => {
-    console.log(`${name} now login`);
-    currentUsers.push(name);
-    console.log(currentUsers);
-  });
+  for (let i = 0; i < users.length; i += 1) {
+    socket.on(`login-${users[i]}`, () => {
+      console.log(`${users[i]} now login`);
+      currentUsers.push(users[i]);
+      console.log(currentUsers);
+    });
+  }
 });
 
 app.use(router.routes());
