@@ -16,9 +16,22 @@ export default class DartsRoom extends React.Component {
         y: null,
         z: null,
       },
+      data: {
+        orientation: {
+          x: null,
+          y: null,
+          z: null,
+        },
+        acceleration: {
+          x: null,
+          y: null,
+          z: null,
+        },
+      },
     };
     this.handleDeviceOrientation = this.handleDeviceOrientation.bind(this);
     this.handleDeviceMotion = this.handleDeviceMotion.bind(this);
+    this.handleClick = this.handleClick.bind(this);
 
     window.addEventListener('deviceorientation', this.handleDeviceOrientation);
     window.addEventListener('devicemotion', this.handleDeviceMotion);
@@ -44,15 +57,27 @@ export default class DartsRoom extends React.Component {
     });
   }
 
+  handleClick() {
+    this.setState({
+      data: {
+        orientation: {
+          x: this.state.orientation.x,
+          y: this.state.orientation.y,
+          z: this.state.orientation.z,
+        },
+        acceleration: {
+          x: this.state.acceleration.x,
+          y: this.state.acceleration.y,
+          z: this.state.acceleration.z,
+        },
+      },
+    });
+  }
+
   render() {
     return (
-      <div>
-        {this.state.orientation.x && <p>orientation x : {this.state.orientation.x}</p>}
-        {this.state.orientation.y && <p>orientation y : {this.state.orientation.y}</p>}
-        {this.state.orientation.z && <p>orientation z : {this.state.orientation.z}</p>}
-        {this.state.acceleration.x && <p>acceleration x : {this.state.acceleration.x}</p>}
-        {this.state.acceleration.y && <p>acceleration y : {this.state.acceleration.y}</p>}
-        {this.state.acceleration.z && <p>acceleration z : {this.state.acceleration.z}</p>}
+      <div className="darts-room">
+        <button type="button" onClick={this.handleClick} />
       </div>
     );
   }
