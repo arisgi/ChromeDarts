@@ -7,7 +7,7 @@
     "watch": "webpack --config webpack.config.babel.js -w",
     "start": "./node_modules/.bin/babel-node app.js",
     "debug": "./node_modules/.bin/babel-node debug app.js",
-    "dev": "yarn run watch & yarn run start"
+    "dev": "yarn run watch & yarn run debug"
   },
   "repository": "git+https://github.com/arisgi/ChromeDarts.git",
   "author": "arisgi <m1so.tama16@gmail.com>",
