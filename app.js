@@ -51,17 +51,16 @@ io.on('connection', (socket) => {
     console.log('someone disconnected');
 
     for (let i = 0; i < users.length; i += 1) {
+      console.log(users[i]);
+      socket.on(`res-${users[i]}`, () => {
+        console.log(`${users[i]} now login`);
+        currentUsers.push(users[i]);
+        console.log(currentUsers);
+      });
+
       io.emit(`check-${users[i]}`);
     }
   });
-
-  for (let i = 0; i < users.length; i += 1) {
-    socket.on(`login-${users[i]}`, () => {
-      console.log(`${users[i]} now login`);
-      currentUsers.push(users[i]);
-      console.log(currentUsers);
-    });
-  }
 });
 
 app.use(router.routes());

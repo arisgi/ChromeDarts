@@ -33,7 +33,7 @@ export default class Sp extends React.Component {
 
       // tell the server that I'm logged in
       socket.on(`check-${loginName}`, () => {
-        socket.emit(`login-${loginName}`);
+        socket.emit(`res-${loginName}`);
       });
     });
 
