@@ -45,6 +45,7 @@ io.on('connection', (socket) => {
     }
   });
 
+  /*
   // check current login users
   const currentUsers = [];
   socket.on('disconnect', () => {
@@ -61,6 +62,7 @@ io.on('connection', (socket) => {
       io.emit(`check-${users[i]}`);
     }
   });
+  */
 });
 
 app.use(router.routes());

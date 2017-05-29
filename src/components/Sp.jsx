@@ -29,12 +29,14 @@ export default class Sp extends React.Component {
         name,
       });
 
+      /*
       loginName = name;
 
       // tell the server that I'm logged in
       socket.on(`check-${loginName}`, () => {
         socket.emit(`res-${loginName}`);
       });
+      */
     });
 
     this.socket.on('reject', () => {
