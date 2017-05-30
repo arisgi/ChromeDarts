@@ -45,25 +45,6 @@ io.on('connection', (socket) => {
     }
   });
 
-  /*
-  // check current login users
-  const currentUsers = [];
-  socket.on('disconnect', () => {
-    console.log('someone disconnected');
-
-    for (let i = 0; i < users.length; i += 1) {
-      console.log(users[i]);
-      socket.on(`res-${users[i]}`, () => {
-        console.log(`${users[i]} now login`);
-        currentUsers.push(users[i]);
-        console.log(currentUsers);
-      });
-
-      io.emit(`check-${users[i]}`);
-    }
-  });
-  */
-
   // send the smart phone's sensor data to the browser
   socket.on('throw', (data) => {
     console.log(data);
