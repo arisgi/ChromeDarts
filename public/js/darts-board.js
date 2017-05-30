@@ -174,7 +174,17 @@ function init() {
 
   document.getElementById('root').appendChild(renderer.domElement);
 
-  function drawDarts(targetPosition) {
+  let status = 'wait';
+  let throwData = {};
+  let darts;
+  socket.on('darts', (data) => {
+    if (status === 'wait') {
+      status = 'decide';
+      throwData = data;
+    }
+  });
+
+  function drawDarts() {
     // tip
     const tipGeo = new THREE.ConeGeometry(3, 30);
     const tipMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
@@ -230,6 +240,54 @@ function init() {
   }
 
   function render() {
+    if (status === 'decide') {
+      darts = drawDarts();
+      status = 'throw';
+    } else if (status === 'throw') {
+      if (darts.tip.position.z > 10) {
+        darts.tip.position.x += throwData.x / 30;
+        darts.tip.position.y += throwData.y / 30;
+        darts.tip.position.z -= 20;
+        darts.barrel.position.x += throwData.x / 30;
+        darts.barrel.position.y += throwData.y / 30;
+        darts.barrel.position.z -= 20;
+        darts.shaft.position.x += throwData.x / 30;
+        darts.shaft.position.y += throwData.y / 30;
+        darts.shaft.position.z -= 20;
+        darts.flight[0].position.x += throwData.x / 30;
+        darts.flight[0].position.y += throwData.y / 30;
+        darts.flight[0].position.z -= 20;
+        darts.flight[1].position.x += throwData.x / 30;
+        darts.flight[1].position.y += throwData.y / 30;
+        darts.flight[1].position.z -= 20;
+        darts.flight[2].position.x += throwData.x / 30;
+        darts.flight[2].position.y += throwData.y / 30;
+        darts.flight[2].position.z -= 20;
+        darts.flight[3].position.x += throwData.x / 30;
+        darts.flight[3].position.y += throwData.y / 30;
+        darts.flight[3].position.z -= 20;
+        if (darts.tip.position.z <= 610 && darts.tip.position.z > 310) {
+          darts.tip.position.y += 1;
+          darts.barrel.position.y += 1;
+          darts.shaft.position.y += 1;
+          darts.flight[0].position.y += 1;
+          darts.flight[1].position.y += 1;
+          darts.flight[2].position.y += 1;
+          darts.flight[3].position.y += 1;
+        } else if (darts.tip.position.z <= 310) {
+          darts.tip.position.y -= 1;
+          darts.barrel.position.y -= 1;
+          darts.shaft.position.y -= 1;
+          darts.flight[0].position.y -= 1;
+          darts.flight[1].position.y -= 1;
+          darts.flight[2].position.y -= 1;
+          darts.flight[3].position.y -= 1;
+        }
+      } else {
+        status = 'wait';
+      }
+    }
+
     requestAnimationFrame(render);
     renderer.render(scene, camera);
   }
