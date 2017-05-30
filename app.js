@@ -85,9 +85,11 @@ io.on('connection', (socket) => {
     rad = deg * Math.PI / 180;
 
     let t = 2.44 / (((data.acceleration.y * weightVel) + correctVel) * Math.cos(rad));
+    let x = -(data.acceleration.x * weightVel) * t;
     let y = (((data.acceleration.y * weightVel) + correctVel) * Math.sin(rad) * t) - (4.9 * t * t);
 
     console.log(`t: ${t}`);
+    console.log(`x: ${x}`);
     console.log(`y: ${y}`);
 
     io.emit('darts', (data));
