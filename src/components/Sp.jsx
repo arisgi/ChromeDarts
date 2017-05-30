@@ -34,7 +34,6 @@ export default class Sp extends React.Component {
 
     // variable to avoid binding of this
     const socket = this.socket;
-    let loginName = this.state.name;
 
     this.socket.on('success', () => {
       this.setState({
