@@ -1,6 +1,6 @@
 import React from 'react';
 
-/* global window */
+/* global window, document */
 
 export default class DartsRoom extends React.Component {
   constructor(props) {
@@ -52,6 +52,7 @@ export default class DartsRoom extends React.Component {
   handleClick() {
     if (this.state.acceleration.y > 0) {
       this.props.handleThrow(this.state);
+      document.getElementById('audio').play();
     }
   }
 
@@ -59,6 +60,9 @@ export default class DartsRoom extends React.Component {
     return (
       <div className="darts-room">
         <button style={this.btnStyle} type="button" onClick={this.handleClick} />
+        <audio id="audio">
+          <source src="/audio/throw.mp3" type="audio/mp3" />
+        </audio>
       </div>
     );
   }
