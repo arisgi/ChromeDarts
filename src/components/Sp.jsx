@@ -9,6 +9,7 @@ export default class Sp extends React.Component {
     this.state = {
       login: false,
       name: '名無し',
+      color: '',
       throwData: {
         orientation: {
           x: null,
@@ -28,8 +29,8 @@ export default class Sp extends React.Component {
     this.socket = io();
   }
 
-  handleLogin(name) {
-    this.socket.emit('login', name);
+  handleLogin(color) {
+    this.socket.emit('login');
 
     // variable to avoid binding of this
     const socket = this.socket;
@@ -37,7 +38,7 @@ export default class Sp extends React.Component {
     this.socket.on('success', () => {
       this.setState({
         login: true,
-        name,
+        color,
       });
     });
   }

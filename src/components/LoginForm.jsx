@@ -26,13 +26,13 @@ export default class LoginForm extends React.Component {
   }
 
   handleSubmit(event) {
-    this.props.handleLogin(event.target.children[0].value);
+    this.props.handleLogin(this.state.value);
     event.preventDefault();
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className="login-form" onSubmit={this.handleSubmit}>
         <p>ダーツの色を選択してください。</p>
         <select name="color" onChange={this.handleChange}>
           <option value="#ff0000">レッド</option>
