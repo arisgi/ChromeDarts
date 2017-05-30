@@ -74,6 +74,8 @@ export default class Sp extends React.Component {
         },
       },
     });
+
+    this.socket.emit('throw', this.state.throwData);
   }
 
   render() {
