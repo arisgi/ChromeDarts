@@ -48,6 +48,16 @@ export default class LoginForm extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
+        <p>ダーツの色を選択してください。</p>
+        <select name="color">
+          <option value="#ff0000">レッド</option>
+          <option value="#ffa500">オレンジ</option>
+          <option value="#ffff00">イエロー</option>
+          <option value="#008000">グリーン</option>
+          <option value="#0000ff">ブルー</option>
+          <option value="#4b0082">インディゴ</option>
+          <option value="#800080">パープル</option>
+        </select>
         <input type="text" value={this.state.value} onChange={this.handleChange} />
         <input type="submit" value="Submit" disabled={this.state.disabled} />
         {this.state.error && <p>{this.state.error}</p>}
