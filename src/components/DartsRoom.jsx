@@ -16,18 +16,6 @@ export default class DartsRoom extends React.Component {
         y: null,
         z: null,
       },
-      data: {
-        orientation: {
-          x: null,
-          y: null,
-          z: null,
-        },
-        acceleration: {
-          x: null,
-          y: null,
-          z: null,
-        },
-      },
     };
     this.handleDeviceOrientation = this.handleDeviceOrientation.bind(this);
     this.handleDeviceMotion = this.handleDeviceMotion.bind(this);
@@ -58,20 +46,7 @@ export default class DartsRoom extends React.Component {
   }
 
   handleClick() {
-    this.setState({
-      data: {
-        orientation: {
-          x: this.state.orientation.x,
-          y: this.state.orientation.y,
-          z: this.state.orientation.z,
-        },
-        acceleration: {
-          x: this.state.acceleration.x,
-          y: this.state.acceleration.y,
-          z: this.state.acceleration.z,
-        },
-      },
-    });
+    this.props.handleThrow(this.state);
   }
 
   render() {

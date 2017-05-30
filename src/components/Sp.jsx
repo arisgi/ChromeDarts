@@ -24,6 +24,7 @@ export default class Sp extends React.Component {
       },
     };
     this.handleLogin = this.handleLogin.bind(this);
+    this.handleThrow = this.handleThrow.bind(this);
 
     this.socket = io();
   }
@@ -58,11 +59,28 @@ export default class Sp extends React.Component {
     });
   }
 
+  handleThrow(data) {
+    this.setState({
+      throwData: {
+        orientation: {
+          x: data.orientation.x,
+          y: data.orientation.y,
+          z: data.orientation.z,
+        },
+        acceleration: {
+          x: data.acceleration.x,
+          y: data.acceleration.y,
+          z: data.acceleration.z,
+        },
+      },
+    });
+  }
+
   render() {
     return (
       <div>
         {this.state.login === false && <LoginForm handleLogin={this.handleLogin} errorMessage={this.state.errorMessage} />}
-        {this.state.login === true && <DartsRoom />}
+        {this.state.login === true && <DartsRoom handleThrow={this.handleThrow} />}
       </div>
     );
   }
