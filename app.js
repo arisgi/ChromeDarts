@@ -29,7 +29,7 @@ router.get('/sp', async (ctx, next) => {
 io.on('connection', (socket) => {
   console.log('server connected');
 
-  socket.on('login', (name) => {
+  socket.on('login', () => {
     io.emit('success');
 
     console.log(`new-comer`);
