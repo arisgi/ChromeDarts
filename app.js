@@ -63,6 +63,11 @@ io.on('connection', (socket) => {
     }
   });
   */
+
+  // send the smart phone's sensor data to the browser
+  socket.on('throw', (data) => {
+    io.emit('darts', (data));
+  });
 });
 
 app.use(router.routes());
