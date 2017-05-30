@@ -10,6 +10,18 @@ export default class Sp extends React.Component {
       login: false,
       name: '名無し',
       errorMessage: '',
+      throwData: {
+        orientation: {
+          x: null,
+          y: null,
+          z: null,
+        },
+        acceleration: {
+          x: null,
+          y: null,
+          z: null,
+        },
+      },
     };
     this.handleLogin = this.handleLogin.bind(this);
 
