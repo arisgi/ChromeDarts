@@ -46,7 +46,9 @@ export default class DartsRoom extends React.Component {
   }
 
   handleClick() {
-    this.props.handleThrow(this.state);
+    if (this.state.acceleration.y > 0) {
+      this.props.handleThrow(this.state);
+    }
   }
 
   render() {
