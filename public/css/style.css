@@ -12,13 +12,14 @@
 }
 
 .darts-room {
-  height: 100vh;
-  width: 100%;
+  box-sizing: border-box;
+  height: 90vh;
+  padding: 5%;
 }
 
 .darts-room button {
-  background: #eeeeee;
-  height: 80%;
-  margin: 10%;
-  width: 80%;
+  border: none;
+  border-radius: 3px;
+  height: 100%;
+  width: 100%;
 }

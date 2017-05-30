@@ -62,7 +62,7 @@ export default class Sp extends React.Component {
     return (
       <div>
         {this.state.login === false && <LoginForm handleLogin={this.handleLogin} />}
-        {this.state.login === true && <DartsRoom handleThrow={this.handleThrow} />}
+        {this.state.login === true && <DartsRoom handleThrow={this.handleThrow} color={this.state.color} />}
       </div>
     );
   }

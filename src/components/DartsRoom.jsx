@@ -3,8 +3,8 @@ import React from 'react';
 /* global window */
 
 export default class DartsRoom extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       orientation: {
         x: null,
@@ -23,6 +23,10 @@ export default class DartsRoom extends React.Component {
 
     window.addEventListener('deviceorientation', this.handleDeviceOrientation);
     window.addEventListener('devicemotion', this.handleDeviceMotion);
+
+    this.btnStyle = {
+      background: this.props.color,
+    };
   }
 
   handleDeviceOrientation(event) {
@@ -54,7 +58,7 @@ export default class DartsRoom extends React.Component {
   render() {
     return (
       <div className="darts-room">
-        <button type="button" onClick={this.handleClick} />
+        <button style={this.btnStyle} type="button" onClick={this.handleClick} />
       </div>
     );
   }
