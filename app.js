@@ -33,16 +33,10 @@ io.on('connection', (socket) => {
   console.log('server connected');
 
   socket.on('login', (name) => {
-    if (users.length < 2) {
-      users.push(name);
-      io.emit('success');
+    users.push(name);
+    io.emit('success');
 
-      console.log(`${name} login`);
-    } else {
-      io.emit('reject');
-
-      console.log(`${name} reject`);
-    }
+    console.log(`new-comer`);
   });
 
   // send the smart phone's sensor data to the browser

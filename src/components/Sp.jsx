@@ -41,12 +41,6 @@ export default class Sp extends React.Component {
         name,
       });
     });
-
-    this.socket.on('reject', () => {
-      this.setState({
-        errorMessage: 'ダーツルームは満席です。',
-      });
-    });
   }
 
   handleThrow(data) {
