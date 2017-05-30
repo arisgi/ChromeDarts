@@ -4,38 +4,23 @@ export default class LoginForm extends React.Component {
   constructor() {
     super();
     this.state = {
-      value: '',
+      value: '#ff0000',
       error: '',
-      disabled: true,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-    this.setState({
-      value: event.target.value,
-    });
-
-    // error message
-    if (event.target.value.length >= 10) {
-      this.setState({
-        error: '10文字以内で入力してください。',
-      });
-    } else {
-      this.setState({
-        error: '',
-      });
-    }
-
     // validation
-    if (!event.target.value || event.target.value.length > 10) {
+    if (!/^#[0-9|a-f|A-F]{6}$/.test(event.target.value)) {
       this.setState({
-        disabled: true,
+        error: 'カラーコードを選択してください。',
       });
     } else {
       this.setState({
-        disabled: false,
+        value: event.target.value,
+        error: '',
       });
     }
   }
@@ -49,7 +34,7 @@ export default class LoginForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <p>ダーツの色を選択してください。</p>
-        <select name="color">
+        <select name="color" onChange={this.handleChange}>
           <option value="#ff0000">レッド</option>
           <option value="#ffa500">オレンジ</option>
           <option value="#ffff00">イエロー</option>
@@ -58,8 +43,7 @@ export default class LoginForm extends React.Component {
           <option value="#4b0082">インディゴ</option>
           <option value="#800080">パープル</option>
         </select>
-        <input type="text" value={this.state.value} onChange={this.handleChange} />
-        <input type="submit" value="Submit" disabled={this.state.disabled} />
+        <input type="submit" value="決定" />
         {this.state.error && <p>{this.state.error}</p>}
       </form>
     );
