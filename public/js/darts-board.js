@@ -284,6 +284,7 @@ function init() {
           darts.flight[3].position.y -= 1;
         }
       } else {
+        document.getElementById('audio').play();
         status = 'wait';
       }
     }
