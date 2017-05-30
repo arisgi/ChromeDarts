@@ -51,7 +51,6 @@ export default class LoginForm extends React.Component {
         <input type="text" value={this.state.value} onChange={this.handleChange} />
         <input type="submit" value="Submit" disabled={this.state.disabled} />
         {this.state.error && <p>{this.state.error}</p>}
-        {this.props.errorMessage && <p>{this.props.errorMessage}</p>}
       </form>
     );
   }

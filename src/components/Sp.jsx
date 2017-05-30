@@ -9,7 +9,6 @@ export default class Sp extends React.Component {
     this.state = {
       login: false,
       name: '名無し',
-      errorMessage: '',
       throwData: {
         orientation: {
           x: null,
@@ -65,7 +64,7 @@ export default class Sp extends React.Component {
   render() {
     return (
       <div>
-        {this.state.login === false && <LoginForm handleLogin={this.handleLogin} errorMessage={this.state.errorMessage} />}
+        {this.state.login === false && <LoginForm handleLogin={this.handleLogin} />}
         {this.state.login === true && <DartsRoom handleThrow={this.handleThrow} />}
       </div>
     );
