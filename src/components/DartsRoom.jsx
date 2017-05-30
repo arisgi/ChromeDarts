@@ -52,7 +52,7 @@ export default class DartsRoom extends React.Component {
   render() {
     return (
       <div className="darts-room">
-        <button type="button" onTap={this.handleClick} />
+        <button type="button" onClick={this.handleClick} />
       </div>
     );
   }
