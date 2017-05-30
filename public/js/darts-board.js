@@ -174,6 +174,61 @@ function init() {
 
   document.getElementById('root').appendChild(renderer.domElement);
 
+  function drawDarts(targetPosition) {
+    // tip
+    const tipGeo = new THREE.ConeGeometry(3, 30);
+    const tipMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
+    const tip = new THREE.Mesh(tipGeo, tipMat);
+    tip.rotation.x = Math.PI * (3 / 2);
+    tip.position.z = 10 + 600;
+    scene.add(tip);
+
+    // barrel
+    const barrelGeo = new THREE.CylinderGeometry(3, 3, 60);
+    const barrelMat = new THREE.MeshBasicMaterial({ color: 0xC0C0C0 });
+    const barrel = new THREE.Mesh(barrelGeo, barrelMat);
+    barrel.rotation.x = Math.PI * (3 / 2);
+    barrel.position.z = 55 + 600;
+    scene.add(barrel);
+
+    // shaft
+    const shaftGeo = new THREE.CylinderGeometry(3, 2, 40);
+    const shaftMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
+    const shaft = new THREE.Mesh(shaftGeo, shaftMat);
+    shaft.rotation.x = Math.PI * (3 / 2);
+    shaft.position.z = 105 + 600;
+    scene.add(shaft);
+
+    // flight
+    const flightGeo = [];
+    const flightMat = [];
+    const flight = [];
+    for (let i = 0; i < 4; i += 1) {
+      flightGeo[i] = new THREE.BoxGeometry(16, 40, 1);
+      flightMat[i] = new THREE.MeshBasicMaterial({
+        color: 0x2FA1D6,
+        side: THREE.DoubleSide,
+      });
+      flight[i] = new THREE.Mesh(flightGeo[i], flightMat[i]);
+      flight[i].rotation.x = Math.PI / 2;
+      flight[i].position.z = 140 + 600;
+      scene.add(flight[i]);
+    }
+    flight[0].position.x = 8;
+    flight[1].position.y = 8;
+    flight[1].rotation.y = Math.PI / 2;
+    flight[2].position.x = -8;
+    flight[3].position.y = -8;
+    flight[3].rotation.y = -Math.PI / 2;
+
+    return {
+      tip,
+      barrel,
+      shaft,
+      flight,
+    };
+  }
+
   function render() {
     requestAnimationFrame(render);
     renderer.render(scene, camera);
