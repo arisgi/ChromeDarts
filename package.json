@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "webpack --config webpack.config.babel.js",
     "watch": "webpack --config webpack.config.babel.js -w",
     "start": "./node_modules/.bin/babel-node app.js",
     "debug": "./node_modules/.bin/babel-node debug app.js",
