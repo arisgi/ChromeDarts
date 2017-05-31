@@ -179,8 +179,8 @@ function init() {
   let darts;
   socket.on('darts', (data) => {
     if (status === 'wait') {
-      status = 'decide';
       throwData = data;
+      status = 'decide';
     }
   });
 
@@ -210,13 +210,17 @@ function init() {
     scene.add(shaft);
 
     // flight
+    let flightRGB = [];
+    flightRGB[0] = parseInt(throwData.color.slice(1, 3), 16);
+    flightRGB[1] = parseInt(throwData.color.slice(3, 5), 16);
+    flightRGB[2] = parseInt(throwData.color.slice(5, 7), 16);
     const flightGeo = [];
     const flightMat = [];
     const flight = [];
     for (let i = 0; i < 4; i += 1) {
       flightGeo[i] = new THREE.BoxGeometry(16, 40, 1);
       flightMat[i] = new THREE.MeshBasicMaterial({
-        color: 0x2FA1D6,
+        color: `rgb(${flightRGB[0]}, ${flightRGB[1]}, ${flightRGB[2]})`,
         side: THREE.DoubleSide,
       });
       flight[i] = new THREE.Mesh(flightGeo[i], flightMat[i]);

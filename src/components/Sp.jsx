@@ -8,8 +8,8 @@ export default class Sp extends React.Component {
     super();
     this.state = {
       login: false,
-      color: '',
       throwData: {
+        color: '',
         orientation: {
           x: null,
           y: null,
@@ -34,14 +34,18 @@ export default class Sp extends React.Component {
     this.socket.on('success', () => {
       this.setState({
         login: true,
-        color,
+        throwData: {
+          color,
+        },
       });
     });
   }
 
   handleThrow(data) {
+    let color = this.state.throwData.color;
     this.setState({
       throwData: {
+        color,
         orientation: {
           x: data.orientation.x,
           y: data.orientation.y,
@@ -62,7 +66,7 @@ export default class Sp extends React.Component {
     return (
       <div>
         {this.state.login === false && <LoginForm handleLogin={this.handleLogin} />}
-        {this.state.login === true && <DartsRoom handleThrow={this.handleThrow} color={this.state.color} />}
+        {this.state.login === true && <DartsRoom handleThrow={this.handleThrow} color={this.state.throwData.color} />}
       </div>
     );
   }
