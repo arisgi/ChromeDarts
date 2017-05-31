@@ -44,6 +44,7 @@ io.on('connection', (socket) => {
       const correctDeg = 15;
       const weightVel = 0.5;
       const correctVel = 5;
+      const level = 0.8;
       // culculate deg
       if (data.orientation.x >= 0) {
         deg = (180 + correctDeg) - data.orientation.x;
@@ -56,9 +57,9 @@ io.on('connection', (socket) => {
       }
       rad = deg * Math.PI / 180;
 
-      let t = 2.44 / (((data.acceleration.y * weightVel) + correctVel) * Math.cos(rad));
-      let x = -(data.acceleration.x * weightVel) * t * 1000;
-      let y = ((((data.acceleration.y * weightVel) + correctVel) * Math.sin(rad) * t) - (4.9 * t * t)) * 1000;
+      let t = 1.22 / (((data.acceleration.y * weightVel) + correctVel) * Math.cos(rad));
+      let x = -(data.acceleration.x * weightVel) * t * 1000 * level;
+      let y = ((((data.acceleration.y * weightVel) + correctVel) * Math.sin(rad) * t) - (4.9 * t * t)) * 1000 * level;
       let color = data.color;
 
       console.log(`t: ${t}`);
