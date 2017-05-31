@@ -288,7 +288,14 @@ function init() {
           darts.flight[3].position.y -= 1;
         }
       } else {
-        document.getElementById('audio').play();
+        if (Math.pow(darts.tip.position.x, 2) + Math.pow(darts.tip.position.y, 2) <= 400) {
+          document.getElementById('bull').play();
+          while (scene.children.length > 104) {
+            scene.remove(scene.children[scene.children.length - 1]);
+          }
+        } else {
+          document.getElementById('stick').play();
+        }
         status = 'wait';
       }
     }
