@@ -293,7 +293,7 @@ function init() {
           while (scene.children.length > 104) {
             scene.remove(scene.children[scene.children.length - 1]);
           }
-        } else {
+        } else if (Math.pow(darts.tip.position.x, 2) + Math.pow(darts.tip.position.y, 2) <= 38025) {
           document.getElementById('stick').play();
         }
         status = 'wait';
